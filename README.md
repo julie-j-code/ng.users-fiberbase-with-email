@@ -32,3 +32,15 @@ Plus spécifiquement, ajouter au tableau des imports
 MatListModule
 MatSidenavModule
 MatIconModule
+MatToolbarModule
+
+`npm i firebase`
+`ng add @angular/fire`
+
+// Angular Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+avec pour l'ajout dans le tableau des imports
+AngularFireModule.initializeApp(environment.firebaseConfig)
+

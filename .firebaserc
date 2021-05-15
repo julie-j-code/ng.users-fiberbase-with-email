@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ng-users-93f69": {
+      "hosting": {
+        "ng-users": [
+          "ng-users-93f69"
+        ]
+      }
+    }
+  }
+}
