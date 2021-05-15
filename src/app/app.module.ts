@@ -18,6 +18,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 import { environment } from 'src/environments/environment';
 import { HomeComponent } from './home/home.component';
@@ -36,13 +37,14 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ReactiveFormsModule,
+    AngularFireAuthModule,
     MatListModule,
     MatSidenavModule,
     MatIconModule,
     MatToolbarModule,
-    AngularFireAuthModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

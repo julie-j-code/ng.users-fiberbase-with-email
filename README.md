@@ -34,6 +34,7 @@ MatSidenavModule
 MatIconModule
 MatToolbarModule
 MatFormFieldModule
+MatButtonModule
 
 `npm i firebase`
 `ng add @angular/fire`
@@ -44,4 +45,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 avec pour l'ajout dans le tableau des imports
 AngularFireModule.initializeApp(environment.firebaseConfig)
+
+Pour l'enregistrement en base
+createUserWithEmailAndPassword fait le job
+Pour le login
+signInWithEmailAndPassword fait le job
+les 2 étant de méthodes mises à disposition par AngularFireAuth
 
