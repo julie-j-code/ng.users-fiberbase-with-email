@@ -33,6 +33,7 @@ MatListModule
 MatSidenavModule
 MatIconModule
 MatToolbarModule
+MatFormFieldModule
 
 `npm i firebase`
 `ng add @angular/fire`
