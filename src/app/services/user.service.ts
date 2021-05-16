@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { User } from '../models/user';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,4 +30,9 @@ export class UserService {
     return usersCollection.add(newUser);
   }
 
+  getUsers() {
+    return this.afs.collection(this.collectionName).valueChanges()as Observable<User[]>;
+  }
 }
+
+

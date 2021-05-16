@@ -1,1 +1,11 @@
-<p>user-list works!</p>
+<h3>Tous les utilisateurs</h3>
+
+<div *ngIf="(users$)">
+    <div *ngFor="let user of users$ | async">
+{{users$ | async | json}}
+    </div>
+</div>
+
+<div *ngIf="!(users$ | async)">
+    loading...
+</div>
