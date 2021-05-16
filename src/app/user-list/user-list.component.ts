@@ -10,7 +10,7 @@ import { User } from '../models/user';
 })
 export class UserListComponent implements OnInit {
   // on va récupérer un observable de users
-  users$: Observable<User[]> | undefined;
+  users$!: Observable<User[]> ;
   constructor(private afs: UserService) { }
 
   ngOnInit(): void {

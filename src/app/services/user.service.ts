@@ -31,7 +31,11 @@ export class UserService {
   }
 
   getUsers() {
-    return this.afs.collection(this.collectionName).valueChanges()as Observable<User[]>;
+    return this.afs.collection(this.collectionName).valueChanges({ idField: 'id' }) as unknown as Observable<User[]>;
+  }
+
+  getUser(id:string) {
+    return this.afs.doc(`${this.collectionName}/${id}`).valueChanges() as Observable<User>;
   }
 }
 
