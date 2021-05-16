@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from "@angular/fire/auth";
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   message:any;
   user:any;
 
-  constructor(private fb: FormBuilder, private afAuth : AngularFireAuth) {
+  constructor(private fb: FormBuilder, private afAuth : AngularFireAuth, private userService:UserService) {
     this.registerForm = this.fb.group({
       email: ['', Validators.email],
       password: ['',[Validators.required, Validators.minLength(6)]]
@@ -42,6 +43,11 @@ export class RegisterComponent implements OnInit {
 
       // this.result = await this.afAuth.createUserWithEmailAndPassword(this.registerForm.value.email,this.registerForm.value.password);
       this.registerForm.reset();
+      if(this.result && this.result.user){
+        const userCreated = this.userService.createUser(this.result.user);
+        console.log('userCreated', userCreated);
+        this.result=null;
+      }
     } catch (error) {
       console.error(error);
       if(error.message === 'The email address is already in use by another account.') {

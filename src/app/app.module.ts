@@ -23,13 +23,15 @@ import {MatButtonModule} from '@angular/material/button';
 import { environment } from 'src/environments/environment';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
