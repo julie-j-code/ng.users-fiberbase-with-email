@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth, User } from 'firebase';
@@ -12,13 +12,13 @@ import { UserCustom } from '../models/user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
-  loginForm: FormGroup;
+  registerForm: UntypedFormGroup;
+  loginForm: UntypedFormGroup;
   result?:  User | auth.UserCredential ;
   message = '';
   user?: auth.UserCredential;
 
-  constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private userService: UserService) {
+  constructor(private fb: UntypedFormBuilder, private afAuth: AngularFireAuth, private userService: UserService) {
     this.registerForm = this.fb.group({
       email: ['', Validators.email],
       password: ['', [Validators.required, Validators.minLength(6)]]
