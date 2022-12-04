@@ -1,6 +1,6 @@
 # NgUsers
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
 ## Development server
 
@@ -14,6 +14,15 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+## Deploy
+
+Do not forget to change firebase.json 
+
+` "public": "dist"`
+instead of 
+` "public": "public"`
+
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
@@ -24,31 +33,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Additional
-`ng add @angular/material`
-Plus spécifiquement, ajouter au tableau des imports
-MatListModule
-MatSidenavModule
-MatIconModule
-MatToolbarModule
-MatFormFieldModule
-MatButtonModule
-
-`npm i firebase`
-`ng add @angular/fire`
-
-// Angular Firebase
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-
-avec pour l'ajout dans le tableau des imports
-AngularFireModule.initializeApp(environment.firebaseConfig)
-
-Pour l'enregistrement en base
-createUserWithEmailAndPassword fait le job
-Pour le login
-signInWithEmailAndPassword fait le job
-les 2 étant de méthodes mises à disposition par AngularFireAuth
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

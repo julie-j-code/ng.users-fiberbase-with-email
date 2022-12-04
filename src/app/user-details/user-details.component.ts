@@ -1,32 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { User } from '../models/user';
 import { UserService } from '../services/user.service';
+import { Observable, Subscription } from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+
+import { User } from 'firebase';
+import { UserCustom } from '../models/user';
+
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
 })
-export class UserDetailsComponent implements OnInit {
-  // mode strict m'emmerde je renonce
-  uid:any ;
-  user$!:Observable<User> | undefined;
+export class UserDetailsComponent implements OnDestroy {
+  user?: UserCustom;
+  uid = '';
+  sub: Subscription;
 
-  // ActivatedRoute pour le paramètre de la route
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService) {
-        // paramMap retourne un observable auquel il faut s'abonner
-    // cet observable nous retournant les paramètres passsés dans l'url
-    this.uid = this.activatedRoute.paramMap.subscribe(params => {
-      this.uid = params.get('id');
-      console.log('this.uid', this.uid);
-      this.user$ = this.userService.getUser(this.uid) as Observable<User>
+    this.sub = this.activatedRoute
+    .params
+    .pipe(
+      switchMap(params => {
+        console.log('params', params);
+        this.uid =params.id;
+        return this.userService.getUser(this.uid)
+      })
+    )
+    .subscribe(user => {
+      this.user = user;
+      this.user.createdAt = (this.user?.createdAt as any).toDate();
+    }, err => {
+      console.error(err);
     });
-   }
+  }
 
-  ngOnInit(): void {
-
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

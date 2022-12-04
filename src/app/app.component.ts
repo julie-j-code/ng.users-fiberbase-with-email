@@ -6,7 +6,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnDestroy{
+export class AppComponent {
   mobileQuery: MediaQueryList;
 
   fillerNav = Array.from({ length: 50 }, (_, i) => `Nav Item ${i + 1}`);
